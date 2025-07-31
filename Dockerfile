@@ -102,8 +102,8 @@ RUN echo 'deb http://deb.debian.org/debian bookworm-backports main' >> /etc/apt/
 # hadolint ignore=DL3008,DL3005
 RUN \
   # Mount Apt cache and lib directories from Docker buildx caches
-  --mount=type=cache,id=apt-cache-${TARGETPLATFORM},target=/var/cache/apt,sharing=locked \
-  --mount=type=cache,id=apt-lib-${TARGETPLATFORM},target=/var/lib/apt,sharing=locked \
+  --mount=type=cache,mastodon_id=apt-cache-${TARGETPLATFORM},target=/var/cache/apt,sharing=locked \
+  --mount=type=cache,mastodon_id=apt-lib-${TARGETPLATFORM},target=/var/lib/apt,sharing=locked \
   # Apt update & upgrade to check for security updates to Debian image
   apt-get update; \
   apt-get dist-upgrade -yq; \
@@ -133,8 +133,8 @@ ARG TARGETPLATFORM
 # hadolint ignore=DL3008
 RUN \
   # Mount Apt cache and lib directories from Docker buildx caches
-  --mount=type=cache,id=apt-cache-${TARGETPLATFORM},target=/var/cache/apt,sharing=locked \
-  --mount=type=cache,id=apt-lib-${TARGETPLATFORM},target=/var/lib/apt,sharing=locked \
+  --mount=type=cache,mastodon_id=apt-cache-${TARGETPLATFORM},target=/var/cache/apt,sharing=locked \
+  --mount=type=cache,mastodon_id=apt-lib-${TARGETPLATFORM},target=/var/lib/apt,sharing=locked \
   # Install build tools and bundler dependencies from APT
   apt-get install -y --no-install-recommends \
   autoconf \
@@ -259,7 +259,7 @@ COPY Gemfile* /opt/mastodon/
 
 RUN \
   # Mount Ruby Gem caches
-  --mount=type=cache,id=gem-cache-${TARGETPLATFORM},target=/usr/local/bundle/cache/,sharing=locked \
+  --mount=type=cache,mastodon_id=gem-cache-${TARGETPLATFORM},target=/usr/local/bundle/cache/,sharing=locked \
   # Configure bundle to prevent changes to Gemfile and Gemfile.lock
   bundle config set --global frozen "true"; \
   # Configure bundle to not cache downloaded Gems
@@ -291,8 +291,8 @@ RUN \
 
 # hadolint ignore=DL3008
 RUN \
-  --mount=type=cache,id=corepack-cache-${TARGETPLATFORM},target=/usr/local/share/.cache/corepack,sharing=locked \
-  --mount=type=cache,id=yarn-cache-${TARGETPLATFORM},target=/usr/local/share/.cache/yarn,sharing=locked \
+  --mount=type=cache,mastodon_id=corepack-cache-${TARGETPLATFORM},target=/usr/local/share/.cache/corepack,sharing=locked \
+  --mount=type=cache,mastodon_id=yarn-cache-${TARGETPLATFORM},target=/usr/local/share/.cache/yarn,sharing=locked \
   # Install Node.js packages
   yarn workspaces focus --production @mastodon/mastodon;
 
@@ -319,11 +319,11 @@ ARG TARGETPLATFORM
 # hadolint ignore=DL3008
 RUN \
   # Mount Apt cache and lib directories from Docker buildx caches
-  --mount=type=cache,id=apt-cache-${TARGETPLATFORM},target=/var/cache/apt,sharing=locked \
-  --mount=type=cache,id=apt-lib-${TARGETPLATFORM},target=/var/lib/apt,sharing=locked \
+  --mount=type=cache,mastodon_id=apt-cache-${TARGETPLATFORM},target=/var/cache/apt,sharing=locked \
+  --mount=type=cache,mastodon_id=apt-lib-${TARGETPLATFORM},target=/var/lib/apt,sharing=locked \
   # Mount Corepack and Yarn caches from Docker buildx caches
-  --mount=type=cache,id=corepack-cache-${TARGETPLATFORM},target=/usr/local/share/.cache/corepack,sharing=locked \
-  --mount=type=cache,id=yarn-cache-${TARGETPLATFORM},target=/usr/local/share/.cache/yarn,sharing=locked \
+  --mount=type=cache,mastodon_id=corepack-cache-${TARGETPLATFORM},target=/usr/local/share/.cache/corepack,sharing=locked \
+  --mount=type=cache,mastodon_id=yarn-cache-${TARGETPLATFORM},target=/usr/local/share/.cache/yarn,sharing=locked \
   # Apt update install non-dev versions of necessary components
   apt-get install -y --no-install-recommends \
   libexpat1 \
