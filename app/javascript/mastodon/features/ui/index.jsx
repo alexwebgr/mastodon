@@ -66,12 +66,10 @@ import {
   DomainBlocks,
   Mutes,
   PinnedStatuses,
-  Directory,
   OnboardingProfile,
   OnboardingFollows,
   Explore,
   Search,
-  About,
   PrivacyPolicy,
   TermsOfService,
   AccountFeatured,
@@ -166,7 +164,6 @@ class SwitchingColumnsArea extends PureComponent {
 
             <WrappedRoute path='/getting-started' component={GettingStarted} content={children} />
             <WrappedRoute path='/keyboard-shortcuts' component={KeyboardShortcuts} content={children} />
-            <WrappedRoute path='/about' component={About} content={children} />
             <WrappedRoute path='/privacy-policy' component={PrivacyPolicy} content={children} />
             <WrappedRoute path='/terms-of-service/:date?' component={TermsOfService} content={children} />
 
@@ -193,7 +190,6 @@ class SwitchingColumnsArea extends PureComponent {
 
             <WrappedRoute path={['/start', '/start/profile']} exact component={OnboardingProfile} content={children} />
             <WrappedRoute path='/start/follows' component={OnboardingFollows} content={children} />
-            <WrappedRoute path='/directory' component={Directory} content={children} />
             <WrappedRoute path='/explore' component={Explore} content={children} />
             <WrappedRoute path='/search' component={Search} content={children} />
             <WrappedRoute path={['/publish', '/statuses/new']} component={Compose} content={children} />

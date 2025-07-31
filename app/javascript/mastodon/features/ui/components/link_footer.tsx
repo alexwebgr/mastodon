@@ -2,12 +2,7 @@ import { FormattedMessage } from 'react-intl';
 
 import { Link } from 'react-router-dom';
 
-import {
-  domain,
-  version,
-  statusPageUrl,
-  termsOfServiceEnabled,
-} from 'mastodon/initial_state';
+import { version, termsOfServiceEnabled } from 'mastodon/initial_state';
 
 const DividingCircle: React.FC = () => <span aria-hidden>{' · '}</span>;
 
@@ -17,19 +12,6 @@ export const LinkFooter: React.FC<{
   return (
     <div className='link-footer'>
       <p>
-        <strong>{domain}</strong>:{' '}
-        <Link to='/about' target={multiColumn ? '_blank' : undefined}>
-          <FormattedMessage id='footer.about' defaultMessage='About' />
-        </Link>
-        {statusPageUrl && (
-          <>
-            <DividingCircle />
-            <a href={statusPageUrl} target='_blank' rel='noopener'>
-              <FormattedMessage id='footer.status' defaultMessage='Status' />
-            </a>
-          </>
-        )}
-        <DividingCircle />
         <Link
           to='/privacy-policy'
           target={multiColumn ? '_blank' : undefined}

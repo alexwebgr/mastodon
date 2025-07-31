@@ -158,10 +158,6 @@ export function Audio () {
   return import('../../audio');
 }
 
-export function Directory () {
-  return import('../../directory');
-}
-
 export function OnboardingProfile () {
   return import('../../onboarding/profile');
 }
@@ -196,10 +192,6 @@ export function SubscribedLanguagesModal () {
 
 export function ClosedRegistrationsModal () {
   return import('../../closed_registrations_modal');
-}
-
-export function About () {
-  return import('../../about');
 }
 
 export function PrivacyPolicy () {

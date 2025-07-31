@@ -9,7 +9,6 @@
   /bookmarks
   /conversations
   /deck/(*any)
-  /directory
   /domain_blocks
   /explore/(*any)
   /favourites
