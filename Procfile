@@ -1,4 +1,4 @@
-web: bin/heroku-web
+web: bundle exec puma -C config/puma.rb
 worker: bundle exec sidekiq
 
 # For the streaming API, you need a separate app that shares Postgres and Redis:
@@ -12,3 +12,4 @@ worker: bundle exec sidekiq
 # and let the main app use the separate app:
 #
 # heroku config:set STREAMING_API_BASE_URL=wss://<streaming-app-random>.herokuapp.com -a <main-app>
+

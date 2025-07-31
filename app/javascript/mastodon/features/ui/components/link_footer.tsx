@@ -7,7 +7,6 @@ import {
   version,
   source_url,
   statusPageUrl,
-  profile_directory as canProfileDirectory,
   termsOfServiceEnabled,
 } from 'mastodon/initial_state';
 
@@ -29,17 +28,6 @@ export const LinkFooter: React.FC<{
             <a href={statusPageUrl} target='_blank' rel='noopener'>
               <FormattedMessage id='footer.status' defaultMessage='Status' />
             </a>
-          </>
-        )}
-        {canProfileDirectory && (
-          <>
-            <DividingCircle />
-            <Link to='/directory'>
-              <FormattedMessage
-                id='footer.directory'
-                defaultMessage='Profiles directory'
-              />
-            </Link>
           </>
         )}
         <DividingCircle />

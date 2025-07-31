@@ -229,4 +229,5 @@ gem 'hcaptcha', '~> 7.1'
 
 gem 'mail', '~> 2.8'
 
+gem 'foreman'
 gem 'vite_rails', '~> 3.0.19'

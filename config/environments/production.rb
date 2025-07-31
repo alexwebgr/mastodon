@@ -129,4 +129,24 @@ Rails.application.configure do
   # ]
   # Skip DNS rebinding protection for the default health check endpoint.
   # config.host_authorization = { exclude: ->(request) { request.path == "/up" } }
+
+  config.action_dispatch.trusted_proxies = [
+    '100.64.0.0/10',  # Railway internal network
+    '127.0.0.1',      # localhost
+    '::1'             # IPv6 localhost
+  ].map { |proxy| IPAddr.new(proxy) }
+
+  config.content_security_policy_report_only = true
+
+  config.action_mailer.default_url_options = { host: Rails.application.credentials['SMTP_HOST'] }
+
+  ActionMailer::Base.smtp_settings = {
+    address: Rails.application.credentials['SMTP_ADDRESS'],
+    port: Rails.application.credentials['SMTP_PORT'],
+    authentication: :plain,
+    user_name: Rails.application.credentials['SMTP_USERNAME'],
+    password: Rails.application.credentials['SMTP_PASSWORD'],
+    domain: Rails.application.credentials['SMTP_HOST'],
+    enable_starttls_auto: true,
+  }
 end
