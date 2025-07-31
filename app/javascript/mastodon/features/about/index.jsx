@@ -20,7 +20,7 @@ import { RulesSection } from './components/rules';
 
 const messages = defineMessages({
   title: { id: 'column.about', defaultMessage: 'About' },
-  blocks: { id: 'about.blocks', defaultMessage: 'Moderated servers' },
+  blocks: {},
   silenced: { id: 'about.domain_blocks.silenced.title', defaultMessage: 'Limited' },
   silencedExplanation: { id: 'about.domain_blocks.silenced.explanation', defaultMessage: 'You will generally not see profiles and content from this server, unless you explicitly look it up or opt into it by following.' },
   suspended: { id: 'about.domain_blocks.suspended.title', defaultMessage: 'Suspended' },

@@ -5,7 +5,6 @@ import { Link } from 'react-router-dom';
 import {
   domain,
   version,
-  source_url,
   statusPageUrl,
   termsOfServiceEnabled,
 } from 'mastodon/initial_state';
@@ -60,10 +59,6 @@ export const LinkFooter: React.FC<{
 
       <p>
         <strong>Mastodon</strong>:{' '}
-        <a href='https://joinmastodon.org' target='_blank' rel='noopener'>
-          <FormattedMessage id='footer.about' defaultMessage='About' />
-        </a>
-        <DividingCircle />
         <a href='https://joinmastodon.org/apps' target='_blank' rel='noopener'>
           <FormattedMessage id='footer.get_app' defaultMessage='Get the app' />
         </a>
@@ -74,13 +69,6 @@ export const LinkFooter: React.FC<{
             defaultMessage='Keyboard shortcuts'
           />
         </Link>
-        <DividingCircle />
-        <a href={source_url} rel='noopener' target='_blank'>
-          <FormattedMessage
-            id='footer.source_code'
-            defaultMessage='View source code'
-          />
-        </a>
         <DividingCircle />
         <span className='version'>v{version}</span>
       </p>
